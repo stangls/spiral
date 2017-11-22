@@ -1,7 +1,7 @@
 import java.lang.Math.*
 
 fun main(args: Array<String>) {
-    printSpiral( 13 )
+    printSpiral( 10 )
 }
 
 fun printSpiral(size: Int) {
