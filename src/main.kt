@@ -1,21 +1,21 @@
 import java.lang.Math.*
 
 fun main(args: Array<String>) {
-    printSpiral( 10 )
+    printSpiral( 13 )
 }
 
 fun printSpiral(size: Int) {
     val fieldLen = floor(log10(max(size*size-1,1).toDouble())).toInt()+1
-    val evenSize = size % 2 == 0
-    val renderSize = if (evenSize) { size+1 } else size;
+    val evenSizeAdd = if (size % 2 == 0) 1 else 0
     for (line in 0 until size) {
-        val spiralLine = getSpiralLine(renderSize,line)
-        val lineToPrint = if (evenSize) spiralLine.drop(1) else spiralLine
         println (
-            lineToPrint.map {
-                val s = it.toString()
-                " ".repeat(fieldLen-s.length )+s
-            }.joinToString(" ")
+            getSpiralLine(size+evenSizeAdd,line)
+                .drop(evenSizeAdd)
+                .map {
+                    val s = it.toString()
+                    " ".repeat(fieldLen-s.length )+s
+                }
+                .joinToString(" ")
         )
     }
 }
